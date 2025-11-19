@@ -84,7 +84,7 @@ def main_callback(service_provider: LockdownClient, dvt: DvtSecureSocketProxySer
     pid_books = next((pid for pid, p in procs.items() if p['ProcessName'] == 'Books'), None)
     if pid_bookassetd:
         click.secho(f"Killing bookassetd pid {pid_bookassetd}...", fg="yellow")
-        pc.kill(pid_bookassetd)
+        pc.signal(pid_bookassetd, 19)
     if pid_books:
         click.secho(f"Killing Books pid {pid_books}...", fg="yellow")
         pc.kill(pid_books)
@@ -138,6 +138,7 @@ def main_callback(service_provider: LockdownClient, dvt: DvtSecureSocketProxySer
         if (posixpath.basename(syslog_entry.filename) == 'bookassetd') and \
                 success_message in syslog_entry.message:
             break
+    pc.kill(pid_bookassetd)
     click.secho("Done!", fg="green")
     sys.exit(0)
 
