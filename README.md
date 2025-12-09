@@ -1,3 +1,4 @@
+# USE AT YOUR OWN RISK
 you can download AMEX Apple Pay Card images here: https://dynalist.io/d/ldKY6rbMR3LPnWz4fTvf_HCh
 
 # bl_sbx
